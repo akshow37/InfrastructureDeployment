@@ -1,5 +1,6 @@
 provider "aws" {
-  region     = "us-east-1"
+  region     = "us-east-2"
+  profile    = "Akeem4all"
 }
 
 # custom vpc
@@ -17,7 +18,7 @@ resource "aws_subnet" "demo_subnet" {
   vpc_id     = aws_vpc.demo.id
   cidr_block = "10.0.1.0/24"
   map_public_ip_on_launch = true
-  availability_zone = "us-east-1a"
+  availability_zone = "us-east-2a"
 
   tags = {
     Name = "demo_subnet"
@@ -95,8 +96,8 @@ resource "aws_instance" "foo" {
   instance_type = "t2.micro"
   subnet_id = aws_subnet.demo_subnet.id
   vpc_security_group_ids = [aws_security_group.allow_tls.id]
-  availability_zone = "us-east-1a"
-  key_name = "devopskeypair"
+  availability_zone = "us-east-2a"
+  key_name = "ADEPEMI_KEYPAIR"
   count = 5
 
   tags = {
